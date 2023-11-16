@@ -22,8 +22,13 @@ public class Main {
         ISubscriber sub1 = new Customer(payment1);
         ISubscriber sub2 = new Customer(payment2);
 
+        WorkerAdapter worker1 = new WorkerAdapter(sub1);
+        WorkerAdapter worker2 = new WorkerAdapter(sub2);
+
         updater.addSubscriber(sub1);
         updater.addSubscriber(sub2);
+        updater.addSubscriber(worker1);
+        updater.addSubscriber(worker2);
         updater.notifySubscribers();
 
         IProduct beverage = factoryBeverage.createProduct();
