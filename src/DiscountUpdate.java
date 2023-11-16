@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class DiscountUpdate { // Observable class that updates the subscribers
     private ArrayList<ISubscriber> ISubscribers = new ArrayList<>(); // The list of subscribers
 
-    protected DiscountUpdate() {}
+    public DiscountUpdate() {}
 
     public void addSubscriber(ISubscriber ISubscriber) {
         /*
@@ -18,7 +18,8 @@ public class DiscountUpdate { // Observable class that updates the subscribers
         this.ISubscribers.remove(ISubscriber);
     }
     public void notifySubscribers() { // Method that notifies subscribers
-        for(Subscriber subscriber : subscribers) {
+        System.out.println("The Black Friday has started!");
+        for(ISubscriber ISubscriber : ISubscribers) {
             /*
                 Iterating through the list of
                 Subscribers using the for-each loop

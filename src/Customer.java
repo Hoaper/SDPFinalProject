@@ -1,20 +1,17 @@
 public class Customer implements ISubscriber {
 
-    private Subscriber subscriber;
+    private ISubscriber ISubscriber;
+    private final Payment payment;
 
-    public Customer(Subscriber subscriber) {
-        this.subscriber = subscriber;
-    }
-
-    public Customer() {
-
+    public Customer(Payment payment) {
+        this.payment = payment;
     }
 
     @Override
     public void update() {
         System.out.println("The User Was Updated");
 
-        // observable.something();
+        // Method that invokes when the Subscribers have been updated about the Discounts;
     }
 
     public void pay(double cost) {
