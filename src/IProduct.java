@@ -4,4 +4,5 @@ public interface IProduct {
     double getPrice();
     //returns description of the items
     String getDescription();
+    String getName();
 }
