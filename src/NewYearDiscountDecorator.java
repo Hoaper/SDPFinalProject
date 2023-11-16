@@ -1,11 +1,11 @@
-// Discount for membership club
-public class MemberShipDiscountDecorator implements IDiscount{
+// Discount for new year
+public class NewYearDiscountDecorator implements IDiscount{
 
     // Wrapable decorator
     private final IDiscount wrappee;
 
     // Discount decorator constructor
-    public MemberShipDiscountDecorator(IDiscount wrappee) {
+    public NewYearDiscountDecorator(IDiscount wrappee) {
         this.wrappee = wrappee;
     }
 

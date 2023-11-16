@@ -1,4 +1,4 @@
-public class Customer implements Subscriber{
+public class Customer implements ISubscriber {
 
     private Subscriber subscriber;
 
@@ -15,5 +15,9 @@ public class Customer implements Subscriber{
         System.out.println("The User Was Updated");
 
         // observable.something();
+    }
+
+    public void pay(double cost) {
+        this.payment.executePayment(cost);
     }
 }

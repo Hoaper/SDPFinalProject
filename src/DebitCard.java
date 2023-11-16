@@ -1,4 +1,10 @@
-public class DebitCard implements PaymentStrategy{
+public class DebitCard implements IPaymentStrategy {
+
+    public double bank;
+
+    public DebitCard(double bank) {
+        this.bank = bank;
+    }
 
     @Override
     public void pay() {

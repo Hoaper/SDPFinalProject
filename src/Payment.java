@@ -1,6 +1,6 @@
 public class Payment {
 
-    private final PaymentStrategy paymentStrategy;
+    private final IPaymentStrategy paymentStrategy;
 
     public Payment(PaymentStrategy paymentStrategy) {
         this.paymentStrategy = paymentStrategy;

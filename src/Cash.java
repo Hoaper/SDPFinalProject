@@ -1,4 +1,9 @@
-public class Cash implements PaymentStrategy{
+public class Cash implements IPaymentStrategy {
+
+    private double bank;
+    public Cash(double bank) {
+        this.bank = bank;
+    }
 
     @Override
     public void pay() {
