@@ -1,15 +1,20 @@
 public class WorkerAdapter implements IWorkerSubscriber{
     private final Customer customer;
-    WorkerAdapter (ISubscriber customer){
-        this.customer = new Customer(new Payment(new DebitCard(500)));
+    WorkerAdapter (Customer customer){
+        this.customer = customer;
     }
     @Override
     public void update() {
         customer.update();
+        System.out.println("Add Products before sales!");
         addProduction();
     }
     @Override
     public void addProduction() {
-        System.out.println("Add products to stash before sales");
+        Storage storage = Storage.getInstance();
+        IProduct beverage = new ProductBeverage();
+        IProduct food = new ProductFood();
+        storage.addProduct(beverage);
+        storage.addProduct(food);
     }
 }
