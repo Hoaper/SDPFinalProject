@@ -1,8 +1,14 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class DiscountUpdate { // Observable class that updates the subscribers
     private ArrayList<ISubscriber> ISubscribers = new ArrayList<>(); // The list of subscribers
     private ArrayList<IWorkerSubscriber> IWorkerSubscribers = new ArrayList<>();
+
+    private LocalDate newYearDate = LocalDate.of(2023, 12, 31);
+    private LocalDate blackFridayDate = LocalDate.of(2023, 10, 13);
+    private LocalDate currentDate = LocalDate.now();
+
     public DiscountUpdate() {}
 
     public void addSubscriber(ISubscriber ISubscriber) {
@@ -30,7 +36,13 @@ public class DiscountUpdate { // Observable class that updates the subscribers
         this.IWorkerSubscribers.remove(IWorkerSubscriber);
     }
     public void notifySubscribers() { // Method that notifies subscribers
-        System.out.println("The Black Friday has started!");
+        if(currentDate.equals(newYearDate)) {
+            System.out.println("The New Year Discounts have started!");
+        } else if(currentDate.equals(blackFridayDate)) {
+            System.out.println("The Black Friday Discounts have started");
+        } else {
+            System.out.println("You've been given a 'Subscriber discount' of 10% !");
+        }
         for(ISubscriber ISubscriber : ISubscribers) {
             /*
                 Iterating through the list of
