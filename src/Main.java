@@ -28,12 +28,23 @@ public class Main {
                         System.out.println("Storage is empty");
                     }
                     else{
-                        storage.showStorage();
-                        System.out.println("Which product you would like to add to the basket?");
-                        answer = scanner.nextInt();
-                        basket.addProduct(answer);
-                        System.out.println("This is your basket:");
-                        basket.show();
+                        while(true){
+                            storage.showStorage();
+                            System.out.println("Which product you would like to add to the basket?");
+                            answer = scanner.nextInt();
+                            basket.addProduct(answer);
+                            if(!storage.isEmpty()) {
+                                System.out.println("Do you want to get more products?" +
+                                        "\n1. Yes" +
+                                        "\n2. No");
+                                answer = scanner.nextInt();
+                            } else {
+                                break;
+                            }
+                            if(answer == 2){
+                                break;
+                            }
+                        }
                     }
                     break;
                 case 2:

@@ -26,4 +26,14 @@ public class Basket implements IBasket{
             System.out.println(i + 1 + " " + basket.get(i).toString());
         }
     }
+    public double countSum(){
+        double sum = 0;
+        for(IProduct product : basket){
+            IDiscount discount = new BaseDiscountDecorator(product.getPrice());
+            discount = new CouponDiscountDecorator(discount);
+            discount = new BlackFridayDiscountDecorator(discount);
+            sum += discount.apply();
+        }
+        return sum;
+    }
 }
