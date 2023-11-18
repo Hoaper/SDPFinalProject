@@ -1,5 +1,6 @@
 import java.util.Scanner;
 public class Main {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         FactoryBeverage factoryBeverage = new FactoryBeverage();
@@ -9,10 +10,16 @@ public class Main {
         storage.addProduct(factoryBeverage.createProduct());
         storage.addProduct(factoryFood.createProduct());
         Basket basket = new Basket();
+        System.out.println("Welcome to our mall! What kind of service do you need?");
         while(true){
-            System.out.println("Welcome to our mall! What kind of service do you need?");
-            System.out.println("1. Buy Products" +
-                    "\n2. Subscription to get information about sales"
+            System.out.println(
+                    "Menu:" +
+                    "\n1. Buy Products" +
+                    "\n2. Subscription to get information about sales" +
+                    "\n3. Get info about products" +
+                    "\n4. Show Basket" +
+                    "\n5. Buy all from my basket" +
+                    "\n9. Exit"
                     );
             int answer = scanner.nextInt();
             switch(answer){
@@ -30,50 +37,41 @@ public class Main {
                     }
                     break;
                 case 2:
-
+                    System.out.println("Enter your type of payment: 1 - Debit Card, 2 - Cash");
+                    discounter.addSubscriber(new Customer(scanner.next()));
+                    break;
+                case 3: // EDIT
+                    storage.showStorage();
+                    break;
+                case 4:
+                    basket.show();
+                    break;
+                case 5:
+                    if(basket.basket.isEmpty()){
+                        System.out.println("Basket is empty");
+                    }
+                    else{
+                        System.out.println("Enter your type of payment: 1 - Debit Card, 2 - Cash");
+                        int typeOfPayment = scanner.nextInt();
+                        System.out.println("Enter your dollars");
+                        double cost = scanner.nextDouble();
+                        IPaymentStrategy newStrategy1;
+                        if(typeOfPayment == 1){
+                            newStrategy1 = new DebitCard(cost);
+                        }
+                        else{
+                            newStrategy1 = new Cash(cost);
+                        }
+                        System.out.println("Enter your email");
+                        ICustomer customer = new Customer(new Payment(newStrategy1), scanner.next());
+                        customer.pay(basket.countSum());
+                        basket.clearBasket();
+                    }
+                    break;
+                case 9:
+                    System.exit(0);
+                    break;
             }
         }
-
-
-//            DebitCard card = new DebitCard(500);
-//            Payment customerCard = new Payment(card);
-//            ISubscriber customer = new Customer(customerCard);
-//
-//        IPaymentStrategy card = new DebitCard(2000);
-//        IPaymentStrategy cash = new Cash(200);
-//
-//        Payment payment1 = new Payment(card);
-//        Payment payment2 = new Payment(cash);
-//
-//        FactoryBeverage factoryBeverage = new FactoryBeverage();
-//        IProduct product = factoryBeverage.createProduct(10);
-//
-//        IDiscount baseDiscount = new BaseDiscountDecorator(product);
-//        System.out.println(baseDiscount.apply());
-//
-//        baseDiscount = new BlackFridayDiscountDecorator(baseDiscount);
-//        System.out.println(baseDiscount.apply());
-//
-//        baseDiscount = new ElevenDiscountDecorator(baseDiscount);
-//        System.out.println(baseDiscount.apply());
-//
-//        DiscountUpdate updater = new DiscountUpdate();
-//        ISubscriber sub1 = new Customer(payment1);
-//        ISubscriber sub2 = new Customer(payment2);
-//
-//        WorkerAdapter worker1 = new WorkerAdapter(sub1);
-//        WorkerAdapter worker2 = new WorkerAdapter(sub2);
-//
-//        updater.addSubscriber(sub1);
-//        updater.addSubscriber(sub2);
-//        updater.addSubscriber(worker1);
-//        updater.addSubscriber(worker2);
-//        updater.notifySubscribers();
-//
-//        IProduct beverage = factoryBeverage.createProduct();
-//        Storage storage = Storage.getInstance();
-//        storage.addProduct(beverage);
-//        storage.getProduct(beverage);
-//        storage.getProduct(beverage);
     }
 }

@@ -58,7 +58,7 @@ public class Payment {
 ```
 
 ### Decorator Pattern
-The Decorator pattern is implemented through the IDiscount interface and its concrete implementations like BaseDiscountDecorator, BlackFridayDiscountDecorator, and ElevenDiscountDecorator. These decorators wrap an IDiscount object and modify its apply method to apply different discounts.
+The Decorator pattern is implemented through the IDiscount interface and its concrete implementations like BaseDiscountDecorator, BlackFridayDiscountDecorator, and CouponDiscountDecorator. These decorators wrap an IDiscount object and modify its apply method to apply different discounts.
 ```java
 public class BlackFridayDiscountDecorator implements IDiscount{
     private final IDiscount wrappee;

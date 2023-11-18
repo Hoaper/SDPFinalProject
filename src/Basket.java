@@ -18,6 +18,10 @@ public class Basket implements IBasket{
     }
     @Override
     public void show(){
+        if (basket.isEmpty()) {
+            System.out.println("Basket is empty");
+            return;
+        }
         for(int i = 0; i < basket.size(); i++){
             System.out.println(i + 1 + " " + basket.get(i).toString());
         }

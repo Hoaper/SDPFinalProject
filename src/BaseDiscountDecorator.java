@@ -1,15 +1,15 @@
 public class BaseDiscountDecorator implements IDiscount{
 
 //    Product to get price from
-    IProduct product;
+    Double cost;
 
-    public BaseDiscountDecorator(IProduct product) {
-        this.product = product;
+    public BaseDiscountDecorator(Double cost) {
+        this.cost = cost;
     }
 
 //    getting price from product
     @Override
     public double apply() {
-        return product.getPrice();
+        return cost;
     }
 }

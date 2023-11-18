@@ -1,9 +1,9 @@
-public class ElevenDiscountDecorator implements IDiscount {
+public class CouponDiscountDecorator implements IDiscount {
 
     // Wrapable object
     private final IDiscount wrappee;
 
-    public ElevenDiscountDecorator(IDiscount wrappee) {
+    public CouponDiscountDecorator(IDiscount wrappee) {
         this.wrappee = wrappee;
     }
 
